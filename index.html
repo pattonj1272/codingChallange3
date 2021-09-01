@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to parse different strings.</p>
+<input type="text" id="numInput" />
+<button onclick="myFunction()">Try it</button>
+
+<p id="output"></p>
+
+<script>
+function calculateValues(number) {
+  let addCount = 0;
+  let multCount = 0;
+
+  let numberAdd = number;
+  let numberMult = number;
+  let numberAddInt = 0;
+  let numberMultInt = 1;
+  
+  while (numberAdd.length > 1 || numberMult.length > 1){
+    if (numberAdd.length > 1){
+      addCount += 1;
+      for (let i = 0; i < numberAdd.length; i++){
+        numberAddInt += parseInt(numberAdd[i], 10);
+      }
+      numberAdd = numberAddInt.toString();
+      numberAddInt = 0;
+    }
+    if (numberMult.length > 1){
+      multCount += 1;
+      for (let i = 0; i < numberMult.length; i++){
+        numberMultInt *= parseInt(numberMult[i], 10);
+      }
+      numberMult = numberMultInt.toString();
+      numberMultInt = 1;
+    }
+  }
+  let StringOut = "Additive Persistence: " + addCount.toString() + "</br>";
+  StringOut += "Multiplicative Persistence: " + multCount.toString()
+  document.getElementById("output").innerHTML = StringOut;
+}
+function myFunction() {
+	let number = document.getElementById("numInput").value;
+    calculateValues(number);
+}
+
+</script>
+
+</body>
+</html>
